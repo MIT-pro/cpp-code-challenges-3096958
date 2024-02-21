@@ -6,24 +6,39 @@
 
 #include <iostream>
 #include <algorithm>
+#include <cmath>
+
+using namespace std;
 
 // is_palindrome()
 // Summary: This function receives a string and returns true if the string is a palindrome, false otherwise.
 // Arguments:
 //           str: The string to analyze.
 // Returns: A boolean value. True for palindromes, false otherwise.
-bool is_palindrome(std::string str){
+bool is_palindrome(string str){
 
     // Write your code here
+    string sthalf = "";
+    for (int i = 0; i < floor(str.length() / 2); i++) {
+        sthalf += str[i];
+    }
 
-    return false;
+    string ndhalf = "";
+    for (int i = str.length(); i < ceil(str.length() / 2); i--) {
+        ndhalf += str[i];
+    }
+    if (sthalf == ndhalf) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 // Main function
 int main(){
-    std::string s;
-    std::cout << "Enter a string: " << std::flush;
-    std::getline(std::cin,s);
-    std::cout << "\n\"" << s << (is_palindrome(s) ? "\" is" : "\" is not" ) << " a palindrome.\n\n";
+    string s;
+    cout << "Enter a string: " << flush;
+    getline(cin,s);
+    cout << "\n\"" << s << (is_palindrome(s) ? "\" is" : "\" is not" ) << " a palindrome.\n\n";
     return 0;
 }
